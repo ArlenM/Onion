@@ -22,9 +22,11 @@
 #
 ############################################################
 import base64
-import math
-from Crypto.Cipher import AES
-from cryptography.hazmat.primitives.keywrap import aes_key_unwrap
+
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.primitives.constant_time import bytes_eq
+from cryptography.hazmat.primitives.keywrap import InvalidUnwrap, _unwrap_core
 
 
 def trim(t_str):
@@ -192,26 +194,39 @@ def udphdrcs(pkt):
         tot += int.from_bytes(p_hdr[x:x + 2], byteorder="big", signed=False)
     tot = (tot & 0xFFFF) + (tot >> 16)  # Wrap anything that overflows 16 bit.
     tot = (tot & 0xFFFF) + (tot >> 16)  # The add could cause a second overflow.
+
     if onesComplement16(tot) == 0:  # One's complement of total should equal 0.
         return True
     return False
 
 
-def onesComplement(n):
-    """Find the one's complement of a given integer."""
-    # Found at https://www.geeksforgeeks.org/find-ones-complement-integer/
-    # This code is contributed by Anant Agarwal.
-    # Find number of bits in the given integer
-    number_of_bits = int(math.floor(math.log(n) / math.log(2))) + 1
-    # XOR the given integer with 2^number_of_bits-1
-    return ((1 << number_of_bits) - 1) ^ n
-
-
 def onesComplement16(n):
+    """One's Complement of a number, 16 bit words only."""
     return ~n & 0xffff  # Invert, then and to get rid of the sign bit.
 
 
-# Initialize
+def key_unwrap(wrapping_key, wrapping_iv, wrapped_key, backend):
+    """AES Key Unwrap algorithm, implements RFC 3394."""
+    # Copied from: https://cryptography.io/en/2.5/_modules/cryptography/hazmat/primitives/keywrap/
+    if len(wrapped_key) < 24:
+        raise InvalidUnwrap("Must be at least 24 bytes")
+
+    if len(wrapped_key) % 8 != 0:
+        raise InvalidUnwrap("The wrapped key must be a multiple of 8 bytes")
+
+    if len(wrapping_key) not in [16, 24, 32]:
+        raise ValueError("The wrapping key must be a valid AES key length")
+
+    r = [wrapped_key[j:j + 8] for j in range(0, len(wrapped_key), 8)]
+    a = r.pop(0)
+    a, r = _unwrap_core(wrapping_key, a, r, backend)
+    if bytes_eq(a, bytes(wrapping_iv)) is False:
+        raise InvalidUnwrap()
+
+    return b"".join(r)
+
+
+# Main - Initialize
 with open("onion.txt") as f:  # Read only
     in_f = f.read()
 
@@ -227,7 +242,7 @@ ba = bytearray(payL)  # Need bytes for bit manipulation.
 for i in range(len(ba)):
     ba[i] ^= 0b01010101  # XOR to flip every other bit, 01010101 = 85.
     ba[i] >>= 1  # Right shift one bit.
-payL = bytearray.decode(ba, "utf-8")
+payL = bytearray(ba).decode("utf-8")
 writeF2(payL, "onion2.txt")
 
 
@@ -289,20 +304,22 @@ writeF2(payL, "onion5.txt")
 # layer 5 - Advanced Encryption Standard
 payL = decode(trim(payL))
 ba = bytearray(payL)
-KEK = ba[0:32]  # Key Encrypting Key
-kIV = ba[32:40]  # Initialization Vector
-Ekey = ba[40:80]  # Encrypted key
-EIV = ba[80:96]  # Encrypted Initialization Vector for payload
-EpayL = ba[96:len(ba)]  # Encrypted payload
-#xx = aes_key_unwrap(KEK, Ekey, kIV)
-#cipher = AES.new(KEK, kIV)
-#deckey = cipher.decrypt(Ekey)
-#cipher2 = AES.new(deckey, AES.MODE_GCM, EIV)
-#laintext = cipher2.decrypt(EpayL)
-#print(plaintext)
-
-# Layer 6
+kEK = ba[0:32]  # Key Encrypting Key
+kIV = ba[32:40]  # Key Initialization Vector
+eKey = ba[40:80]  # Encrypted key
+pIV = ba[80:96]  # Payload Initialization Vector
+ePayL = ba[96:]  # Encrypted payload
+dKey = key_unwrap(wrapping_key=kEK, wrapping_iv=kIV, wrapped_key=eKey, backend=default_backend())
+cipher = Cipher(algorithms.AES(dKey), modes.CTR(pIV), backend=default_backend())
+payL = cipher.decryptor().update(ePayL).decode("utf-8")
 print(payL)
+writeF2(payL, "onion6.txt")
+
+
+# Layer 6 - Virtual Machine
+payL = decode(trim(payL))
+ba = bytearray(payL)
+print(ba)
 
 
 # Exit
