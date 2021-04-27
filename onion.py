@@ -226,6 +226,10 @@ def key_unwrap(wrapping_key, wrapping_iv, wrapped_key, backend):
     return b"".join(r)
 
 
+def vm(bytecode):
+    return bytecode
+
+
 # Main - Initialize
 with open("onion.txt") as f:  # Read only
     in_f = f.read()
@@ -312,14 +316,16 @@ ePayL = ba[96:]  # Encrypted payload
 dKey = key_unwrap(wrapping_key=kEK, wrapping_iv=kIV, wrapped_key=eKey, backend=default_backend())
 cipher = Cipher(algorithms.AES(dKey), modes.CTR(pIV), backend=default_backend())
 payL = cipher.decryptor().update(ePayL).decode("utf-8")
-print(payL)
 writeF2(payL, "onion6.txt")
 
 
 # Layer 6 - Virtual Machine
 payL = decode(trim(payL))
 ba = bytearray(payL)
-print(ba)
+
+print(vm(ba))
+#payL = bytearray(ba).decode("utf-8")
+#print(payL)
 
 
 # Exit
