@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="51a113d4-73b2-4aa5-a8e5-ca378045f6ab" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/pythonProject.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1qf4sauA21k5biIaA44WyM0u2Y9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="run.code.analysis.last.selected.profile" value="aDefault" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\phil\PycharmProjects\pythonProject" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="onion" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="pythonProject" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/onion.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="51a113d4-73b2-4aa5-a8e5-ca378045f6ab" name="Default Changelist" comment="" />
+      <created>1617457518004</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1617457518004</updated>
+      <workItem from="1617457526173" duration="64000" />
+      <workItem from="1617457600569" duration="16000" />
+      <workItem from="1617457664386" duration="434000" />
+      <workItem from="1617458183341" duration="75000" />
+      <workItem from="1617459762962" duration="16725000" />
+      <workItem from="1617498602587" duration="272000" />
+      <workItem from="1617548511073" duration="3355000" />
+      <workItem from="1617553831157" duration="3790000" />
+      <workItem from="1617568256256" duration="10111000" />
+      <workItem from="1617592403424" duration="850000" />
+      <workItem from="1617646205901" duration="7196000" />
+      <workItem from="1617661815177" duration="11760000" />
+      <workItem from="1617679223837" duration="1840000" />
+      <workItem from="1617688877751" duration="4110000" />
+      <workItem from="1617747451013" duration="16238000" />
+      <workItem from="1617771470129" duration="2940000" />
+      <workItem from="1617774667632" duration="1569000" />
+      <workItem from="1617777107258" duration="177000" />
+      <workItem from="1617781771808" duration="1600000" />
+      <workItem from="1618258612175" duration="24000" />
+      <workItem from="1618258689391" duration="37000" />
+      <workItem from="1618259543459" duration="67000" />
+      <workItem from="1618259661821" duration="869000" />
+      <workItem from="1618267107024" duration="1355000" />
+      <workItem from="1618288753091" duration="552000" />
+      <workItem from="1618290169858" duration="852000" />
+      <workItem from="1618292601565" duration="2015000" />
+      <workItem from="1618295772072" duration="575000" />
+      <workItem from="1618317094686" duration="4909000" />
+      <workItem from="1618325804953" duration="3014000" />
+      <workItem from="1618362313383" duration="863000" />
+      <workItem from="1618448802311" duration="578000" />
+      <workItem from="1618492801325" duration="31000" />
+      <workItem from="1618494787042" duration="18422000" />
+      <workItem from="1618580128708" duration="3590000" />
+      <workItem from="1618601791025" duration="3643000" />
+      <workItem from="1618866501386" duration="46000" />
+      <workItem from="1618871349682" duration="9680000" />
+      <workItem from="1618887896802" duration="1778000" />
+      <workItem from="1618896151112" duration="1011000" />
+      <workItem from="1619039358459" duration="193000" />
+      <workItem from="1619041581845" duration="21000" />
+      <workItem from="1619041735114" duration="5000" />
+      <workItem from="1619053063747" duration="4847000" />
+      <workItem from="1619058853093" duration="5612000" />
+      <workItem from="1619064540971" duration="463000" />
+      <workItem from="1619068426174" duration="2277000" />
+      <workItem from="1619115407420" duration="3016000" />
+      <workItem from="1619120848088" duration="3300000" />
+      <workItem from="1619127139883" duration="1256000" />
+      <workItem from="1619468021980" duration="1762000" />
+      <workItem from="1619478618041" duration="413000" />
+      <workItem from="1619481843981" duration="51000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Onion$main.coverage" NAME="onion Coverage Results" MODIFIED="1617458247382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pythonProject$main.coverage" NAME="main Coverage Results" MODIFIED="1617457666920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Onion$onion.coverage" NAME="onion Coverage Results" MODIFIED="1619478699376" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
