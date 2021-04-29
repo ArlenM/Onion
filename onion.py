@@ -157,36 +157,24 @@ def iphdrcs(pkt):
 def udphdrcs(pkt):
     """Test if UDP header checksum is valid."""
 
-    # Length of payload
-    leng = int.from_bytes(pkt[24:26], byteorder="big", signed=False)
-
     # Create Pseudo Header
     p_hdr = bytearray()
-    p_hdr.append(pkt[12])  # Src address
-    p_hdr.append(pkt[13])
-    p_hdr.append(pkt[14])
-    p_hdr.append(pkt[15])
-    p_hdr.append(pkt[16])  # Dest address
-    p_hdr.append(pkt[17])
-    p_hdr.append(pkt[18])
-    p_hdr.append(pkt[19])
+    for x in range(12, 20):
+        p_hdr.append(pkt[x])  # Src and Dest addresses.
     p_hdr.append(0)        # Pad
     p_hdr.append(pkt[9])   # Protocol
     p_hdr.append(pkt[24])  # Length of payload
     p_hdr.append(pkt[25])
-    p_hdr.append(pkt[20])  # Src port
-    p_hdr.append(pkt[21])
-    p_hdr.append(pkt[22])  # Dest port
-    p_hdr.append(pkt[23])
-    p_hdr.append(pkt[24])  # Length of payload, again
-    p_hdr.append(pkt[25])
-    p_hdr.append(pkt[26])  # UDP Checksum
-    p_hdr.append(pkt[27])
+    for x in range(20, 28):
+        p_hdr.append(pkt[x])  # Src and Dest ports, Length of payload again, UDP Checksum.
     for x in range(28, len(pkt)):  # Payload
         p_hdr.append(pkt[x])
-    if leng % 2 != 0:  # Pad if odd, need 16 bit groups.
+
+    # Check length of payload and pad if odd, need 16 bit groups.
+    leng = int.from_bytes(pkt[24:26], byteorder="big", signed=False)
+    if leng % 2 != 0:
         leng += 1
-        p_hdr.append(0)  # Padding
+        p_hdr.append(0)  # Pad
 
     # Total 16 bit words in Pseudo Header
     tot = 0
@@ -195,7 +183,8 @@ def udphdrcs(pkt):
     tot = (tot & 0xFFFF) + (tot >> 16)  # Wrap anything that overflows 16 bit.
     tot = (tot & 0xFFFF) + (tot >> 16)  # The add could cause a second overflow.
 
-    if onesComplement16(tot) == 0:  # One's complement of total should equal 0.
+    # One's complement of total, should equal 0.
+    if onesComplement16(tot) == 0:
         return True
     return False
 
@@ -227,7 +216,82 @@ def key_unwrap(wrapping_key, wrapping_iv, wrapped_key, backend):
 
 
 def vm(bytecode):
-    return bytecode
+    """Virtual machine to interpret given bytecode and return text."""
+    out_stream = ""
+
+    # 8-Bit Registers
+    a = 0  # Accumulator
+    b = 0  # Operand Register
+    c = 0  # Count/Offset Register
+    d = 0  # General Purpose Register
+    e = 0  # General Purpose Register
+    f = 0  # Flags Register
+    # 32-Bit Registers
+    la = 0  # General Purpose Register
+    lb = 0  # General Purpose Register
+    lc = 0  # General Purpose Register
+    ld = 0  # General Purpose Register
+    ptr = 0  # Pointer to Memory
+    pc = 0  # Program Counter
+    # Pseudo Register
+    ptrc = 0  # Memory Cursor
+
+    eop = len(bytecode)
+
+
+    # Main loop
+    # No switch statement???
+    while pc < eop:
+        if bytecode[pc] == 0xC2:  # ADD a <- b, 8-bit addition
+            print("Add")
+            pc += 1
+        elif bytecode[pc] == 0xE1:  # APTR imm8, Advance pointer
+            print("APTR ", bytecode[pc+1])
+            pc += 2
+        elif bytecode[pc] == 0xc1:  # CMP, Compare a and b, results in f.
+            print("CMP")
+            pc += 2
+        elif bytecode[pc] == 0x01:  # HALT, Halt execution.
+            print("HALT")
+            #pc = eop  # Hop to end of program.
+            pc += 1
+        elif bytecode[pc] == 0x21:  # JEZ imm32, Jump if equals zero, determined by f.
+            print("JEZ ", bytecode[pc+1], bytecode[pc+2], bytecode[pc+3], bytecode[pc+4])
+            pc += 5
+        elif bytecode[pc] == 0x22:  # JNZ imm32, Jump if not zero, determined by f.
+            print("JNZ ", bytecode[pc+1], bytecode[pc+2], bytecode[pc+3], bytecode[pc+4])
+            pc += 5
+        elif bytecode[pc] == 0b01001010:  # MV {dest} <- {src}, Move 8-bit value, b to a.
+            print("MV b to a")
+            pc += 2
+        elif bytecode[pc] == 0b01001011:  # MV {dest} <- {src}, Move 8-bit value, c to a.
+            print("MV c to a")
+            pc += 2
+        elif bytecode[pc] == 0b01001100:  # MV {dest} <- {src}, Move 8-bit value, d to a.
+            print("MV d to a")
+            pc += 2
+        elif bytecode[pc] == 0b01001101:  # MV {dest} <- {src}, Move 8-bit value, e to a.
+            print("MV e to a")
+            pc += 2
+        elif bytecode[pc] == 0b01001110:  # MV {dest} <- {src}, Move 8-bit value, f to a.
+            print("MV f to a")
+            pc += 2
+        elif bytecode[pc] == 0b01001111:  # MV {dest} <- {src}, Move 8-bit value, (ptr+c) to a.
+            print("MV (ptr+c) to a")
+            pc += 2
+        elif bytecode[pc] == 0x02:  # OUT, Output byte, value of a.
+            print("OUT")
+            pc += 1
+        elif bytecode[pc] == 0xC3:  # SUB a <- b, 8-bit subtraction, b from a.
+            print("SUB")
+            pc += 1
+        elif bytecode[pc] == 0xC4:  # XOR a <- b, 8-bit bitwise exclusive OR, b XOR a.
+            print("XOR")
+            pc += 2
+        else:
+            pc += 1
+
+    return out_stream
 
 
 # Main - Initialize
@@ -322,7 +386,6 @@ writeF2(payL, "onion6.txt")
 # Layer 6 - Virtual Machine
 payL = decode(trim(payL))
 ba = bytearray(payL)
-
 print(vm(ba))
 #payL = bytearray(ba).decode("utf-8")
 #print(payL)
