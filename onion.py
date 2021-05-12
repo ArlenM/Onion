@@ -5,6 +5,7 @@
 # or why I'm messing with it, it is what it is...
 #
 # Created to improve my Python skills.
+# Also trying out the PyCharm IDE.
 #
 # Source Website: https://www.tomdalling.com/toms-data-onion/
 #
@@ -19,6 +20,7 @@
 # I think any 8 bit char set will work,
 # the default ascii for python seems to be 7 bit.
 #
+# First fully working version! 5/12/21
 #
 ############################################################
 import base64
@@ -305,7 +307,7 @@ writeF2(payL, "onion6.txt")
 
 
 # Layer 6 - Virtual Machine
-# Test program - Replace ba with hello to run.
+# Replace ba with hello to run test program, set debug to true to monitor execution.
 hello = bytearray(b'\x50\x48\xC2\x02\xA8\x4D\x00\x00\x00\x4F\x02\x50\x09\xC4\x02\x02'
                   b'\xE1\x01\x4F\x02\xC1\x22\x1D\x00\x00\x00\x48\x30\x02\x58\x03\x4F'
                   b'\x02\xB0\x29\x00\x00\x00\x48\x31\x02\x50\x0C\xC3\x02\xAA\x57\x48'
@@ -316,6 +318,8 @@ payL = decode(trim(payL))
 ba = bytearray(payL)
 # ba = hello
 payL = tomtel_VM(ba, debug=False)
+
+# The shocking results!
 print(payL)
 # writeF2(payL, "core.txt")
 
