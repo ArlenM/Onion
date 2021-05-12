@@ -1,5 +1,7 @@
-def tom_tel_VM(memory, debug):
-    """Tom Tel Virtual machine to interpret given bytecode and return text."""
+def tomtel_VM(memory, debug):
+    """Tomtel Virtual machine to interpret given bytecode and return text.
+
+    Returns a string, set debug to True to monitor execution."""
     # 8-Bit Registers
     a = 0  # Accumulator
     b = 0  # Operand Register

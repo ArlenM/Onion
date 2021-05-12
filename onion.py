@@ -22,12 +22,11 @@
 #
 ############################################################
 import base64
-
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.primitives.constant_time import bytes_eq
 from cryptography.hazmat.primitives.keywrap import InvalidUnwrap, _unwrap_core
-from tom_tel import tom_tel_VM
+from tomtel import tomtel_VM
 
 
 def trim(t_str):
@@ -316,7 +315,7 @@ hello = bytearray(b'\x50\x48\xC2\x02\xA8\x4D\x00\x00\x00\x4F\x02\x50\x09\xC4\x02
 payL = decode(trim(payL))
 ba = bytearray(payL)
 # ba = hello
-payL = tom_tel_VM(ba, debug=False)
+payL = tomtel_VM(ba, debug=False)
 print(payL)
 # writeF2(payL, "core.txt")
 
