@@ -1,3 +1,13 @@
+######################################################
+# tomtel.py
+#
+# Implements the Tomtel Core i69 virtual machine,
+# from the Tom's Data Onion programming challenge.
+#
+# Created by: Arlen McDonald
+#
+# 5/12/21
+######################################################
 def tomtel_VM(memory, debug):
     """Tomtel Virtual machine to interpret given bytecode and return text.
 
