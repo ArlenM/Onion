@@ -1,8 +1,8 @@
 #############################################################
 # Onion.py
 #
-# This is a programing challenge, not even sure what it is
-# or why I'm messing with it, it is what it is...
+# This is a programing challenge which turned out to be a lot of fun!
+# Thanks to Tom Dalling for providing it!
 #
 # Created to improve my Python skills.
 # Also trying out the PyCharm IDE.
@@ -69,7 +69,7 @@ def writeF(t_str, name):
 
 
 def writeF2(t_str, name):
-    """Write out results to a file, no encoding."""
+    """Write out results to a file, no decoding needed."""
     with open(name, "w", ) as f2:
         f2.write(t_str)
 
@@ -158,7 +158,6 @@ def iphdrcs(pkt):
 
 def udphdrcs(pkt):
     """Test if UDP header checksum is valid."""
-
     # Create Pseudo Header
     p_hdr = bytearray()
     for x in range(12, 20):
@@ -193,7 +192,7 @@ def udphdrcs(pkt):
 
 def onesComplement16(n):
     """One's Complement of a number, 16 bit words only."""
-    return ~n & 0xffff  # Invert, then and to get rid of the sign bit.
+    return ~n & 0xffff  # Invert then and to get rid of the sign bit.
 
 
 def key_unwrap(wrapping_key, wrapping_iv, wrapped_key, backend):
