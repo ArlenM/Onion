@@ -509,5 +509,4 @@ def tomtel_VM(memory, debug):
             if debug:
                 print("Invalid Instruction", memory[pc])
             pc += 1
-
     return out_stream

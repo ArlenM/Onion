@@ -31,42 +31,42 @@ from cryptography.hazmat.primitives.keywrap import InvalidUnwrap, _unwrap_core
 from tomtel import tomtel_VM
 
 
-def trim(t_str):
+def trim(pl):
     """Trim down to the payload, delimited by <~ and ~>, adobe version."""
-    t_str = t_str[t_str.index("ayload ]"):]  # Drop the header first, could contain stray markers...
-    t_str = t_str[t_str.index("<~"):]
-    t_str = t_str[:t_str.index("~>") + 2]
-    t_str = t_str.replace("z", "!!!!!")  # Part of the spec, but not sure if it is needed...
-    pad(t_str)
-    return t_str
+    pl = pl[pl.index("ayload ]"):]  # Drop the header first, could contain stray markers...
+    pl = pl[pl.index("<~"):]
+    pl = pl[:pl.index("~>") + 2]
+    pl = pl.replace("z", "!!!!!")  # Part of the spec, but not sure if it is needed...
+    pad(pl)
+    return pl
 
 
-def pad(t_str):
+def pad(pl):
     """Pad the string with u so they are even groups of five, part of the spec, but not sure if it is needed."""
-    t_str = t_str[:t_str.index("~>")]
-    if len(t_str) - 2 % 5 == 1:
-        t_str = t_str + "uuuu"
-    if len(t_str) - 2 % 5 == 2:
-        t_str = t_str + "uuu"
-    if len(t_str) - 2 % 5 == 3:
-        t_str = t_str + "uu"
-    if len(t_str) - 2 % 5 == 4:
-        t_str = t_str + "u"
-    return t_str + "~>"
+    pl = pl[:pl.index("~>")]
+    if len(pl) - 2 % 5 == 1:
+        pl = pl + "uuuu"
+    if len(pl) - 2 % 5 == 2:
+        pl = pl + "uuu"
+    if len(pl) - 2 % 5 == 3:
+        pl = pl + "uu"
+    if len(pl) - 2 % 5 == 4:
+        pl = pl + "u"
+    return pl + "~>"
 
 
-def decode(t_str):
+def decode_85(pl):
     """Decode using Adobe85, strip out whitespace, line-feeds, and control characters.
 
     Every layer needs this as a pre-process."""
-    return base64.a85decode(t_str, adobe=True, foldspaces=False, ignorechars=b' \n\r\t\v\\s\0')
+    return base64.a85decode(pl, adobe=True, foldspaces=False, ignorechars=b' \n\r\t\v\\s\0')
 
 
-def writeF(t_str, name):
+def writeF(pl, name):
     """Write out results to a file."""
-    with open(name, "w", ) as f2:
-        f2.write(t_str)
-    f2.close()
+    with open(name, "w", ) as w_fl:
+        w_fl.write(pl)
+    w_fl.close()
 
 
 def parity_test(byt):
@@ -78,17 +78,17 @@ def parity_test(byt):
     return False
 
 
-def parity(x):
+def parity(byt):
     """Determine parity of a byte, return 0 for even, 1 for odd."""
     # Found at: https://stackoverflow.com/questions/57548852/checking-parity-of-a-number-in-python
-    res = 0
-    while x:
-        res ^= x & 1
-        x >>= 1
-    return res
+    pty = 0
+    while byt:
+        pty ^= byt & 1
+        byt >>= 1
+    return pty
 
 
-def bytestr(tb: bytes):
+def byte_str(tb: bytes):
     """Bytes to string, return a string representing a 7 bit binary number."""
     ts = ""
     tb >>= 1
@@ -121,37 +121,37 @@ def depacketize(pktary):
     return pl
 
 
-def srciptest(pkt, a, b, c, d):
+def src_ip_test(pkt, a, b, c, d):
     """Determine if source IP address matches input."""
     if pkt[12] == a and pkt[13] == b and pkt[14] == c and pkt[15] == d:
         return True
     return False
 
 
-def destiptest(pkt, a, b, c, d):
+def dest_ip_test(pkt, a, b, c, d):
     """Determine if destination IP address matches input."""
     if pkt[16] == a and pkt[17] == b and pkt[18] == c and pkt[19] == d:
         return True
     return False
 
 
-def getdestport(pkt):
+def get_dest_port(pkt):
     """Return destination port of input packet."""
     port = int.from_bytes(pkt[22:24], byteorder="big", signed=False)
     return port
 
 
-def iphdrcs(pkt):
+def ip_hdr_cs(pkt):
     """Test if IPv4 header checksum is valid."""
     tot = 0
     for x in range(0, 19, 2):
         tot += int.from_bytes(pkt[x:x + 2], byteorder="big", signed=False)
-    if onesComplement16(tot) == 0:  # One's complement of total should equal 0.
+    if ones_comp_16(tot) == 0:  # One's complement of total should equal 0.
         return True
     return False
 
 
-def udphdrcs(pkt):
+def udp_hdr_cs(pkt):
     """Test if UDP header checksum is valid."""
     # Create Pseudo Header
     p_hdr = bytearray()
@@ -180,12 +180,12 @@ def udphdrcs(pkt):
     tot = (tot & 0xFFFF) + (tot >> 16)  # The add could cause a second overflow.
 
     # One's complement of total, should equal 0.
-    if onesComplement16(tot) == 0:
+    if ones_comp_16(tot) == 0:
         return True
     return False
 
 
-def onesComplement16(n):
+def ones_comp_16(n):
     """One's Complement of a number, 16 bit words only."""
     return ~n & 0xffff  # Invert then and to get rid of the sign bit.
 
@@ -212,18 +212,18 @@ def key_unwrap(wrapping_key, wrapping_iv, wrapped_key, backend):
 
 
 # Main - Initialize
-with open("onion.txt") as fl:  # Read only
-    in_f = fl.read()
-fl.close()
+with open("onion.txt") as r_fl:  # Read only
+    in_f = r_fl.read()
+r_fl.close()
 
 
 # Layer 0 - ASCII85
-payL = decode(trim(in_f))
+payL = decode_85(trim(in_f))
 writeF(payL.decode("utf-8"), "onion1.txt")
 
 
 # Layer 1 - Bitwise Operations
-payL = decode(trim(payL.decode("utf-8")))
+payL = decode_85(trim(payL.decode("utf-8")))
 ba = bytearray(payL)  # Need bytes for bit manipulation.
 for i in range(len(ba)):
     ba[i] ^= 0b01010101  # XOR to flip every other bit, 01010101 = 85.
@@ -233,7 +233,7 @@ writeF(payL, "onion2.txt")
 
 
 # Layer 2 - Parity Bit
-payL = decode(trim(payL))
+payL = decode_85(trim(payL))
 ba = bytearray(payL)
 
 # Test for bad parity and discard fails
@@ -245,8 +245,8 @@ for i in ba:
 # Convert from 8, 7 bit groups to 7, 8 bit groups.  Uses a string of text 1s and 0s as an intermediary step.
 ba3 = bytearray()
 for i in range(0, len(ba2), 8):
-    r_str = bytestr(ba2[i]) + bytestr(ba2[i + 1]) + bytestr(ba2[i + 2]) + bytestr(ba2[i + 3]) \
-            + bytestr(ba2[i + 4]) + bytestr(ba2[i + 5]) + bytestr(ba2[i + 6]) + bytestr(ba2[i + 7])  # Bytes to string.
+    r_str = byte_str(ba2[i]) + byte_str(ba2[i + 1]) + byte_str(ba2[i + 2]) + byte_str(ba2[i + 3]) \
+            + byte_str(ba2[i + 4]) + byte_str(ba2[i + 5]) + byte_str(ba2[i + 6]) + byte_str(ba2[i + 7])  # Bytes to string.
     ba3 = ba3 + bytearray(int(r_str, 2).to_bytes(7, byteorder="big", signed=False))  # String to bytes.
 
 payL = bytearray.decode(bytearray(ba3), "utf-8")
@@ -254,7 +254,7 @@ writeF(payL, "onion3.txt")
 
 
 # Layer 3 - XOR Encryption
-payL = decode(trim(payL))
+payL = decode_85(trim(payL))
 ba = bytearray(payL)
 key = bytearray(b'\x6c\x24\x84\x8e\x42\x19\xa8\xe1'
                 b'\xc5\xdb\x57\x65\xb9\xc6\x14\x9e'
@@ -268,17 +268,17 @@ writeF(payL, "onion4.txt")
 
 
 # Layer 4 - Network Traffic
-payL = decode(trim(payL))
+payL = decode_85(trim(payL))
 ba = bytearray(payL)
 packets = packetize(ba)  # Break up into packets
 # Filter out bad packets
 testing = 0
 while testing < len(packets):
-    if srciptest(packets[testing], 10, 1, 1, 10) is False \
-            or destiptest(packets[testing], 10, 1, 1, 200) is False \
-            or getdestport(packets[testing]) != 42069 \
-            or iphdrcs(packets[testing]) is False \
-            or udphdrcs(packets[testing]) is False:
+    if src_ip_test(packets[testing], 10, 1, 1, 10) is False \
+            or dest_ip_test(packets[testing], 10, 1, 1, 200) is False \
+            or get_dest_port(packets[testing]) != 42069 \
+            or ip_hdr_cs(packets[testing]) is False \
+            or udp_hdr_cs(packets[testing]) is False:
         packets.pop(testing)
     else:
         testing += 1
@@ -288,7 +288,7 @@ writeF(payL, "onion5.txt")
 
 
 # layer 5 - Advanced Encryption Standard
-payL = decode(trim(payL))
+payL = decode_85(trim(payL))
 ba = bytearray(payL)
 kEK = ba[0:32]  # Key Encrypting Key
 kIV = ba[32:40]  # Key Initialization Vector
@@ -309,7 +309,7 @@ hello = bytearray(b'\x50\x48\xC2\x02\xA8\x4D\x00\x00\x00\x4F\x02\x50\x09\xC4\x02
                   b'\x02\xC1\x21\x3A\x00\x00\x00\x48\x32\x02\x48\x77\x02\x48\x6F\x02'
                   b'\x48\x72\x02\x48\x6C\x02\x48\x64\x02\x48\x21\x02\x01\x65\x6F\x33'
                   b'\x34\x2C')
-payL = decode(trim(payL))
+payL = decode_85(trim(payL))
 ba = bytearray(payL)
 # ba = hello
 payL = tomtel_VM(ba, debug=False)
