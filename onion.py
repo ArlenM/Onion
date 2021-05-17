@@ -66,6 +66,7 @@ def writeF(t_str, name):
     """Write out results to a file."""
     with open(name, "w", ) as f2:
         f2.write(t_str)
+    f2.close()
 
 
 def parity_test(byt):
@@ -213,6 +214,7 @@ def key_unwrap(wrapping_key, wrapping_iv, wrapped_key, backend):
 # Main - Initialize
 with open("onion.txt") as fl:  # Read only
     in_f = fl.read()
+fl.close()
 
 
 # Layer 0 - ASCII85
