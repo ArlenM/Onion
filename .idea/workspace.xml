@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51a113d4-73b2-4aa5-a8e5-ca378045f6ab" name="Default Changelist" comment="First complete working version!">
+    <list default="true" id="51a113d4-73b2-4aa5-a8e5-ca378045f6ab" name="Default Changelist" comment="Did some refactoring, all layers still working!">
       <change beforePath="$PROJECT_DIR$/onion.py" beforeDir="false" afterPath="$PROJECT_DIR$/onion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tomtel.py" beforeDir="false" afterPath="$PROJECT_DIR$/tomtel.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +177,7 @@
       <workItem from="1621172680177" duration="1895000" />
       <workItem from="1621179976520" duration="263000" />
       <workItem from="1621191143010" duration="276000" />
-      <workItem from="1621192157259" duration="4319000" />
+      <workItem from="1621192157259" duration="5174000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit, layers 0 to 4 working.">
       <created>1619481966988</created>
@@ -292,7 +291,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621217129035</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Did some refactoring, all layers still working!">
+      <created>1621218446909</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1621218446909</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,7 +321,8 @@
     <MESSAGE value="Delete o3.py" />
     <MESSAGE value="Layer 5 working!" />
     <MESSAGE value="First complete working version!" />
-    <option name="LAST_COMMIT_MESSAGE" value="First complete working version!" />
+    <MESSAGE value="Did some refactoring, all layers still working!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Did some refactoring, all layers still working!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -331,6 +338,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Onion$main.coverage" NAME="onion Coverage Results" MODIFIED="1617458247382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pythonProject$main.coverage" NAME="main Coverage Results" MODIFIED="1617457666920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Onion$onion.coverage" NAME="onion Coverage Results" MODIFIED="1621218093847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Onion$onion.coverage" NAME="onion Coverage Results" MODIFIED="1621219258067" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

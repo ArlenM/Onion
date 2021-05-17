@@ -223,8 +223,7 @@ writeF(payL.decode("utf-8"), "onion1.txt")
 
 
 # Layer 1 - Bitwise Operations
-payL = decode_85(trim(payL.decode("utf-8")))
-ba = bytearray(payL)  # Need bytes for bit manipulation.
+ba = bytearray(decode_85(trim(payL.decode("utf-8"))))  # Need bytes for bit manipulation.
 for i in range(len(ba)):
     ba[i] ^= 0b01010101  # XOR to flip every other bit, 01010101 = 85.
     ba[i] >>= 1  # Right shift one bit.
@@ -233,8 +232,7 @@ writeF(payL, "onion2.txt")
 
 
 # Layer 2 - Parity Bit
-payL = decode_85(trim(payL))
-ba = bytearray(payL)
+ba = bytearray(decode_85(trim(payL)))
 
 # Test for bad parity and discard fails
 ba2 = bytearray()
@@ -243,19 +241,20 @@ for i in ba:
         ba2.append(i)
 
 # Convert from 8, 7 bit groups to 7, 8 bit groups.  Uses a string of text 1s and 0s as an intermediary step.
-ba3 = bytearray()
+ba = bytearray()
 for i in range(0, len(ba2), 8):
-    r_str = byte_str(ba2[i]) + byte_str(ba2[i + 1]) + byte_str(ba2[i + 2]) + byte_str(ba2[i + 3]) \
-            + byte_str(ba2[i + 4]) + byte_str(ba2[i + 5]) + byte_str(ba2[i + 6]) + byte_str(ba2[i + 7])  # Bytes to string.
-    ba3 = ba3 + bytearray(int(r_str, 2).to_bytes(7, byteorder="big", signed=False))  # String to bytes.
+    r_str = byte_str(ba2[i]) + byte_str(ba2[i + 1])\
+            + byte_str(ba2[i + 2]) + byte_str(ba2[i + 3]) \
+            + byte_str(ba2[i + 4]) + byte_str(ba2[i + 5])\
+            + byte_str(ba2[i + 6]) + byte_str(ba2[i + 7])  # Bytes to string.
+    ba = ba + bytearray(int(r_str, 2).to_bytes(7, byteorder="big", signed=False))  # String to bytes.
 
-payL = bytearray.decode(bytearray(ba3), "utf-8")
+payL = bytearray.decode(bytearray(ba), "utf-8")
 writeF(payL, "onion3.txt")
 
 
 # Layer 3 - XOR Encryption
-payL = decode_85(trim(payL))
-ba = bytearray(payL)
+ba = bytearray(decode_85(trim(payL)))
 key = bytearray(b'\x6c\x24\x84\x8e\x42\x19\xa8\xe1'
                 b'\xc5\xdb\x57\x65\xb9\xc6\x14\x9e'
                 b'\xa5\x19\x35\x96\x3b\x39\x7f\xa5'
@@ -268,8 +267,7 @@ writeF(payL, "onion4.txt")
 
 
 # Layer 4 - Network Traffic
-payL = decode_85(trim(payL))
-ba = bytearray(payL)
+ba = bytearray(decode_85(trim(payL)))
 packets = packetize(ba)  # Break up into packets
 # Filter out bad packets
 testing = 0
@@ -288,8 +286,7 @@ writeF(payL, "onion5.txt")
 
 
 # layer 5 - Advanced Encryption Standard
-payL = decode_85(trim(payL))
-ba = bytearray(payL)
+ba = bytearray(decode_85(trim(payL)))
 kEK = ba[0:32]  # Key Encrypting Key
 kIV = ba[32:40]  # Key Initialization Vector
 eKey = ba[40:80]  # Encrypted key
@@ -309,12 +306,11 @@ hello = bytearray(b'\x50\x48\xC2\x02\xA8\x4D\x00\x00\x00\x4F\x02\x50\x09\xC4\x02
                   b'\x02\xC1\x21\x3A\x00\x00\x00\x48\x32\x02\x48\x77\x02\x48\x6F\x02'
                   b'\x48\x72\x02\x48\x6C\x02\x48\x64\x02\x48\x21\x02\x01\x65\x6F\x33'
                   b'\x34\x2C')
-payL = decode_85(trim(payL))
-ba = bytearray(payL)
+ba = bytearray(decode_85(trim(payL)))
 # ba = hello
 payL = tomtel_VM(ba, debug=False)
 
-# The shocking results!
+# The Core - Shocking Results!
 print(payL)
 # writeF(payL, "core.txt")
 
