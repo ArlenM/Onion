@@ -63,13 +63,7 @@ def decode(t_str):
 
 
 def writeF(t_str, name):
-    """Write out results to a file, UTF-8 encoded."""
-    with open(name, "w", ) as f2:
-        f2.write(t_str.decode("utf-8"))
-
-
-def writeF2(t_str, name):
-    """Write out results to a file, no decoding needed."""
+    """Write out results to a file."""
     with open(name, "w", ) as f2:
         f2.write(t_str)
 
@@ -223,7 +217,7 @@ with open("onion.txt") as fl:  # Read only
 
 # Layer 0 - ASCII85
 payL = decode(trim(in_f))
-writeF(payL, "onion1.txt")
+writeF(payL.decode("utf-8"), "onion1.txt")
 
 
 # Layer 1 - Bitwise Operations
@@ -233,7 +227,7 @@ for i in range(len(ba)):
     ba[i] ^= 0b01010101  # XOR to flip every other bit, 01010101 = 85.
     ba[i] >>= 1  # Right shift one bit.
 payL = bytearray(ba).decode("utf-8")
-writeF2(payL, "onion2.txt")
+writeF(payL, "onion2.txt")
 
 
 # Layer 2 - Parity Bit
@@ -254,7 +248,7 @@ for i in range(0, len(ba2), 8):
     ba3 = ba3 + bytearray(int(r_str, 2).to_bytes(7, byteorder="big", signed=False))  # String to bytes.
 
 payL = bytearray.decode(bytearray(ba3), "utf-8")
-writeF2(payL, "onion3.txt")
+writeF(payL, "onion3.txt")
 
 
 # Layer 3 - XOR Encryption
@@ -268,7 +262,7 @@ key = bytearray(b'\x6c\x24\x84\x8e\x42\x19\xa8\xe1'
 for i in range(len(ba)):
     ba[i] ^= key[i % 32]  # XOR bytearray with key, 32 byte chunks.
 payL = bytearray(ba).decode("utf-8")
-writeF2(payL, "onion4.txt")
+writeF(payL, "onion4.txt")
 
 
 # Layer 4 - Network Traffic
@@ -288,7 +282,7 @@ while testing < len(packets):
         testing += 1
 
 payL = depacketize(packets)  # Strip out payload data
-writeF2(payL, "onion5.txt")
+writeF(payL, "onion5.txt")
 
 
 # layer 5 - Advanced Encryption Standard
@@ -302,7 +296,7 @@ ePayL = ba[96:]  # Encrypted payload
 dKey = key_unwrap(wrapping_key=kEK, wrapping_iv=kIV, wrapped_key=eKey, backend=default_backend())
 cipher = Cipher(algorithms.AES(dKey), modes.CTR(pIV), backend=default_backend())
 payL = cipher.decryptor().update(ePayL).decode("utf-8")
-writeF2(payL, "onion6.txt")
+writeF(payL, "onion6.txt")
 
 
 # Layer 6 - Virtual Machine
@@ -320,6 +314,6 @@ payL = tomtel_VM(ba, debug=False)
 
 # The shocking results!
 print(payL)
-# writeF2(payL, "core.txt")
+# writeF(payL, "core.txt")
 
 # Exit
