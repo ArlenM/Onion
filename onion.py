@@ -1,4 +1,4 @@
-#############################################################
+#####################################################################
 # Onion.py
 #
 # This is a programing challenge which turned out to be a lot of fun!
@@ -22,7 +22,7 @@
 #
 # First fully working version! 5/12/21
 #
-############################################################
+#####################################################################
 import base64
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
@@ -227,7 +227,7 @@ ba = bytearray(decode_85(trim(payL.decode("utf-8"))))  # Need bytes for bit mani
 for i in range(len(ba)):
     ba[i] ^= 0b01010101  # XOR to flip every other bit, 01010101 = 85.
     ba[i] >>= 1  # Right shift one bit.
-payL = bytearray(ba).decode("utf-8")
+payL = ba.decode("utf-8")
 writeF(payL, "onion2.txt")
 
 
@@ -247,9 +247,9 @@ for i in range(0, len(ba2), 8):
             + byte_str(ba2[i + 2]) + byte_str(ba2[i + 3]) \
             + byte_str(ba2[i + 4]) + byte_str(ba2[i + 5])\
             + byte_str(ba2[i + 6]) + byte_str(ba2[i + 7])  # Bytes to string.
-    ba = ba + bytearray(int(r_str, 2).to_bytes(7, byteorder="big", signed=False))  # String to bytes.
+    ba += bytearray(int(r_str, 2).to_bytes(7, byteorder="big", signed=False))  # String to bytes.
 
-payL = bytearray.decode(bytearray(ba), "utf-8")
+payL = ba.decode("utf-8")
 writeF(payL, "onion3.txt")
 
 
@@ -262,7 +262,7 @@ key = bytearray(b'\x6c\x24\x84\x8e\x42\x19\xa8\xe1'
 
 for i in range(len(ba)):
     ba[i] ^= key[i % 32]  # XOR bytearray with key, 32 byte chunks.
-payL = bytearray(ba).decode("utf-8")
+payL = ba.decode("utf-8")
 writeF(payL, "onion4.txt")
 
 
