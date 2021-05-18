@@ -1,8 +1,8 @@
 #############################################################
 # Onion.py
 #
-# This is a programing challenge, not even sure what it is
-# or why I'm messing with it, it is what it is...
+# This is a programing challenge which turned out to be a lot of fun!
+# Thanks to Tom Dalling for providing it!
 #
 # Created to improve my Python skills.
 #
