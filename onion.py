@@ -34,8 +34,7 @@ from tomtel import tomtel_VM
 def trim(pl):
     """Trim down to the payload, delimited by <~ and ~>, adobe version."""
     pl = pl[pl.index("ayload ]"):]  # Drop the header first, could contain stray markers...
-    pl = pl[pl.index("<~"):]
-    pl = pl[:pl.index("~>") + 2]
+    pl = pl[pl.index("<~"):pl.rindex("~>") + 2]
     pl = pl.replace("z", "!!!!!")  # Part of the spec, but not sure if it is needed...
     pad(pl)
     return pl
