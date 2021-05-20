@@ -26,7 +26,7 @@ def tomtel_VM(memory, debug):
     ld = 0  # General Purpose Register
     ptr = 0  # Pointer to Memory
     pc = 0  # Program Counter (Next instruction)
-
+    # Other variables
     eop = len(memory)  # End of Program Flag
     out_stream = ""
 
@@ -37,12 +37,12 @@ def tomtel_VM(memory, debug):
             if debug:
                 print("Add", a, b)
             a += b
-            a = a & 0xFF  # Limit to 8 bits.
+            a &= 0xFF  # Limit to 8 bits.
             pc += 1
         elif memory[pc] == 0xE1:  # APTR imm8, Advance pointer
             if debug:
                 print("APTR", memory[pc + 1])
-            ptr += memory[pc+1]
+            ptr += memory[pc + 1]
             pc += 2
         elif memory[pc] == 0xc1:  # CMP, Compare a and b, results in f.
             if debug:
@@ -60,14 +60,14 @@ def tomtel_VM(memory, debug):
             if debug:
                 print("JEZ", memory[pc + 1], memory[pc + 2], memory[pc + 3], memory[pc + 4])
             if f == 0:
-                pc = int.from_bytes(memory[pc+1:pc+5], byteorder="little", signed=False)
+                pc = int.from_bytes(memory[pc + 1:pc + 5], byteorder="little", signed=False)
             else:
                 pc += 5
         elif memory[pc] == 0x22:  # JNZ imm32, Jump if not zero, determined by f.
             if debug:
                 print("JNZ", memory[pc + 1], memory[pc + 2], memory[pc + 3], memory[pc + 4])
             if f != 0:
-                pc = int.from_bytes(memory[pc+1:pc+5], byteorder="little", signed=False)
+                pc = int.from_bytes(memory[pc + 1:pc + 5], byteorder="little", signed=False)
             else:
                 pc += 5
         elif memory[pc] == 0b01001010:  # MV {dest} <- {src}, Move 8-bit value, b to a.
@@ -496,9 +496,9 @@ def tomtel_VM(memory, debug):
         elif memory[pc] == 0xC3:  # SUB a <- b, 8-bit subtraction, b from a.
             if debug:
                 print("SUB", a, b)
-            a = a - b
+            a -= b
             if a < 0:
-                a = a + 256
+                a += 256
             pc += 1
         elif memory[pc] == 0xC4:  # XOR a <- b, 8-bit bitwise exclusive OR, b XOR a.
             if debug:

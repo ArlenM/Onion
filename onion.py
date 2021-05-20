@@ -62,9 +62,9 @@ def decode_85(pl):
     return base64.a85decode(pl, adobe=True, foldspaces=False, ignorechars=b' \n\r\t\v\\s\0')
 
 
-def writeF(pl, name):
+def writeF(pl, fn):
     """Write out results to a file."""
-    with open(name, "w", ) as w_fl:
+    with open(fn, "w") as w_fl:
         w_fl.write(pl)
     w_fl.close()
 
@@ -248,7 +248,6 @@ for i in range(0, len(ba2), 8):
             + byte_str(ba2[i + 4]) + byte_str(ba2[i + 5])\
             + byte_str(ba2[i + 6]) + byte_str(ba2[i + 7])  # Bytes to string.
     ba += bytearray(int(r_str, 2).to_bytes(7, byteorder="big", signed=False))  # String to bytes.
-
 payL = ba.decode("utf-8")
 writeF(payL, "onion3.txt")
 
@@ -269,6 +268,7 @@ writeF(payL, "onion4.txt")
 # Layer 4 - Network Traffic
 ba = bytearray(decode_85(trim(payL)))
 packets = packetize(ba)  # Break up into packets
+
 # Filter out bad packets
 testing = 0
 while testing < len(packets):
@@ -280,7 +280,6 @@ while testing < len(packets):
         packets.pop(testing)
     else:
         testing += 1
-
 payL = depacketize(packets)  # Strip out payload data
 writeF(payL, "onion5.txt")
 
