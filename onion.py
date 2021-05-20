@@ -45,11 +45,11 @@ def pad(pl):
     pl = pl[:pl.index("~>")]
     if len(pl) - 2 % 5 == 1:
         pl = pl + "uuuu"
-    if len(pl) - 2 % 5 == 2:
+    elif len(pl) - 2 % 5 == 2:
         pl = pl + "uuu"
-    if len(pl) - 2 % 5 == 3:
+    elif len(pl) - 2 % 5 == 3:
         pl = pl + "uu"
-    if len(pl) - 2 % 5 == 4:
+    elif len(pl) - 2 % 5 == 4:
         pl = pl + "u"
     return pl + "~>"
 
