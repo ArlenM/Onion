@@ -44,13 +44,13 @@ def pad(pl):
     """Pad the string with u so they are even groups of five, part of the spec, but not sure if it is needed."""
     pl = pl[:pl.index("~>")]
     if len(pl) - 2 % 5 == 1:
-        pl = pl + "uuuu"
+        pl += "uuuu"
     elif len(pl) - 2 % 5 == 2:
-        pl = pl + "uuu"
+        pl += "uuu"
     elif len(pl) - 2 % 5 == 3:
-        pl = pl + "uu"
+        pl += "uu"
     elif len(pl) - 2 % 5 == 4:
-        pl = pl + "u"
+        pl += "u"
     return pl + "~>"
 
 
