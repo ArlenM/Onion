@@ -503,7 +503,7 @@ def tomtel_VM(memory, debug):
         elif memory[pc] == 0xC4:  # XOR a <- b, 8-bit bitwise exclusive OR, b XOR a.
             if debug:
                 print("XOR", a, b)
-            a = a ^ b
+            a ^= b
             pc += 1
         else:
             if debug:
