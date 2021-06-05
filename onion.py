@@ -291,8 +291,8 @@ eKey = ba[40:80]  # Encrypted key
 pIV = ba[80:96]  # Payload Initialization Vector
 ePayL = ba[96:]  # Encrypted payload
 dKey = key_unwrap(wrapping_key=kEK, wrapping_iv=kIV, wrapped_key=eKey, backend=default_backend())
-cipher = Cipher(algorithms.AES(dKey), modes.CTR(pIV), backend=default_backend())
-payL = cipher.decryptor().update(ePayL).decode("utf-8")
+c_text = Cipher(algorithms.AES(dKey), modes.CTR(pIV), backend=default_backend())
+payL = c_text.decryptor().update(ePayL).decode("utf-8")
 writeF(payL, "onion6.txt")
 
 
@@ -303,7 +303,7 @@ hello = bytearray(b'\x50\x48\xC2\x02\xA8\x4D\x00\x00\x00\x4F\x02\x50\x09\xC4\x02
                   b'\x02\xB0\x29\x00\x00\x00\x48\x31\x02\x50\x0C\xC3\x02\xAA\x57\x48'
                   b'\x02\xC1\x21\x3A\x00\x00\x00\x48\x32\x02\x48\x77\x02\x48\x6F\x02'
                   b'\x48\x72\x02\x48\x6C\x02\x48\x64\x02\x48\x21\x02\x01\x65\x6F\x33'
-                  b'\x34\x2C')
+                  b'\x34\x2C')  # Test program, prints Hello World!
 ba = bytearray(decode_85(trim(payL)))
 # ba = hello
 payL = tomtel_VM(ba, debug=False)
