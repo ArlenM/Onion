@@ -58,6 +58,7 @@ def decode_85(pl):
     """Decode using Adobe85, strip out whitespace, line-feeds, and control characters.
 
     Every layer needs this as a pre-process."""
+    pl = trim(pl)
     return base64.a85decode(pl, adobe=True, foldspaces=False, ignorechars=b' \n\r\t\v\\s\0')
 
 
@@ -217,12 +218,12 @@ r_fl.close()
 
 
 # Layer 0 - ASCII85
-payL = decode_85(trim(in_f))
+payL = decode_85(in_f)
 writeF(payL.decode("utf-8"), "onion1.txt")
 
 
 # Layer 1 - Bitwise Operations
-ba = bytearray(decode_85(trim(payL.decode("utf-8"))))  # Need bytes for bit manipulation.
+ba = bytearray(decode_85(payL.decode("utf-8")))  # Need bytes for bit manipulation.
 for i in range(len(ba)):
     ba[i] ^= 0b01010101  # XOR to flip every other bit, 01010101 = 85.
     ba[i] >>= 1  # Right shift one bit.
@@ -231,7 +232,7 @@ writeF(payL, "onion2.txt")
 
 
 # Layer 2 - Parity Bit
-ba = bytearray(decode_85(trim(payL)))
+ba = bytearray(decode_85(payL))
 
 # Test for bad parity and discard fails
 ba2 = bytearray()
@@ -252,7 +253,7 @@ writeF(payL, "onion3.txt")
 
 
 # Layer 3 - XOR Encryption
-ba = bytearray(decode_85(trim(payL)))
+ba = bytearray(decode_85(payL))
 key = bytearray(b'\x6c\x24\x84\x8e\x42\x19\xa8\xe1'
                 b'\xc5\xdb\x57\x65\xb9\xc6\x14\x9e'
                 b'\xa5\x19\x35\x96\x3b\x39\x7f\xa5'
@@ -265,7 +266,7 @@ writeF(payL, "onion4.txt")
 
 
 # Layer 4 - Network Traffic
-ba = bytearray(decode_85(trim(payL)))
+ba = bytearray(decode_85(payL))
 packets = packetize(ba)  # Break up into packets
 
 # Filter out bad packets
@@ -284,7 +285,7 @@ writeF(payL, "onion5.txt")
 
 
 # layer 5 - Advanced Encryption Standard
-ba = bytearray(decode_85(trim(payL)))
+ba = bytearray(decode_85(payL))
 kEK = ba[0:32]  # Key Encrypting Key
 kIV = ba[32:40]  # Key Initialization Vector
 eKey = ba[40:80]  # Encrypted key
@@ -304,7 +305,7 @@ hello = bytearray(b'\x50\x48\xC2\x02\xA8\x4D\x00\x00\x00\x4F\x02\x50\x09\xC4\x02
                   b'\x02\xC1\x21\x3A\x00\x00\x00\x48\x32\x02\x48\x77\x02\x48\x6F\x02'
                   b'\x48\x72\x02\x48\x6C\x02\x48\x64\x02\x48\x21\x02\x01\x65\x6F\x33'
                   b'\x34\x2C')  # Test program, prints Hello World!
-ba = bytearray(decode_85(trim(payL)))
+ba = bytearray(decode_85(payL))
 # ba = hello
 payL = tomtel_VM(ba, debug=False)
 
