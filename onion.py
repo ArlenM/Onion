@@ -63,7 +63,7 @@ def decode_85(pl):
 
 
 def writeF(pl, fn):
-    """Write out results to a file."""
+    """Write results to a file."""
     with open(fn, "w") as w_fl:
         w_fl.write(pl)
     w_fl.close()
