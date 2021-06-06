@@ -41,7 +41,7 @@ def trim(pl):
 
 
 def pad(pl):
-    """Pad the string with u so they are even groups of five, part of the spec, but not sure if it is needed."""
+    """Pad the string with u so they are even groups of five."""
     pl = pl[:pl.index("~>")]
     if len(pl) - 2 % 5 == 1:
         pl += "uuuu"
