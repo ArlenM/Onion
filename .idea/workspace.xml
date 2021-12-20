@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51a113d4-73b2-4aa5-a8e5-ca378045f6ab" name="Default Changelist" comment="Minor changes, final version.">
-      <change afterPath="$PROJECT_DIR$/helpers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/pythonProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pythonProject.iml" afterDir="false" />
+    <list default="true" id="51a113d4-73b2-4aa5-a8e5-ca378045f6ab" name="Default Changelist" comment="Moved the helper functions to their own file.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/onion.py" beforeDir="false" afterPath="$PROJECT_DIR$/onion.py" afterDir="false" />
     </list>
@@ -253,7 +251,8 @@
       <workItem from="1639233959361" duration="103000" />
       <workItem from="1639410536160" duration="1188000" />
       <workItem from="1639880249300" duration="581000" />
-      <workItem from="1640016485947" duration="1102000" />
+      <workItem from="1640016485947" duration="1348000" />
+      <workItem from="1640017921979" duration="629000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit, layers 0 to 4 working.">
       <created>1619481966988</created>
@@ -451,7 +450,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622985252406</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Moved the helper functions to their own file.">
+      <created>1640017627825</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1640017627825</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -475,7 +481,8 @@
     <MESSAGE value="First complete working version!" />
     <MESSAGE value="Did some refactoring, all layers still working!" />
     <MESSAGE value="Minor changes, final version." />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor changes, final version." />
+    <MESSAGE value="Moved the helper functions to their own file." />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved the helper functions to their own file." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
