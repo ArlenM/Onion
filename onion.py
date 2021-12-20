@@ -14,7 +14,8 @@
 #
 # Notes:
 #
-# Outputs a text file for each layer.
+# Input is an encoded text file.
+# Output is a text file for each layer.
 #
 # For charset I use UTF-8 because it is 8 bit,
 # I think any 8 bit char set will work,
