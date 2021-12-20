@@ -129,8 +129,10 @@ ba = bytearray(decode_85(payL))
 # ba = hello
 payL = tomtel_VM(ba, debug=False)
 
+
 # The Core - Shocking Results!
 print(payL)
 # writeF(payL, "core.txt")
+
 
 # Exit
