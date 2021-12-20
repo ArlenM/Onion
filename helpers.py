@@ -1,6 +1,8 @@
 ######################################################
 # helpers.py
 #
+# Needed for onion.py
+#
 # Implements various helper functions needed for
 # the Tom's Data Onion programming challenge.
 #

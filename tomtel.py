@@ -1,6 +1,8 @@
 ######################################################
 # tomtel.py
 #
+# Needed for onion.py
+#
 # Implements the Tomtel Core i69 virtual machine,
 # from the Tom's Data Onion programming challenge.
 #
