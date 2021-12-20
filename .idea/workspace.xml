@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="51a113d4-73b2-4aa5-a8e5-ca378045f6ab" name="Default Changelist" comment="Minor changes, final version.">
+      <change afterPath="$PROJECT_DIR$/helpers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/pythonProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pythonProject.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/onion.py" beforeDir="false" afterPath="$PROJECT_DIR$/onion.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +38,9 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="1qf4sauA21k5biIaA44WyM0u2Y9" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -44,6 +53,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="Python" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -52,10 +62,11 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\phil\PycharmProjects\Onion" />
       <recent name="C:\Users\phil\PycharmProjects\pythonProject" />
     </key>
   </component>
@@ -207,6 +218,42 @@
       <workItem from="1622917714391" duration="745000" />
       <workItem from="1622919041040" duration="253000" />
       <workItem from="1622922272582" duration="15000" />
+      <workItem from="1622985179734" duration="620000" />
+      <workItem from="1622986849969" duration="655000" />
+      <workItem from="1622994218200" duration="109000" />
+      <workItem from="1623001102954" duration="337000" />
+      <workItem from="1623008802194" duration="24000" />
+      <workItem from="1623160603895" duration="11000" />
+      <workItem from="1624198974468" duration="677000" />
+      <workItem from="1624712469692" duration="18000" />
+      <workItem from="1625403666026" duration="14000" />
+      <workItem from="1625403705884" duration="26000" />
+      <workItem from="1625753490274" duration="13000" />
+      <workItem from="1625847074743" duration="333000" />
+      <workItem from="1628015039826" duration="33000" />
+      <workItem from="1628015121380" duration="50000" />
+      <workItem from="1628533829933" duration="21000" />
+      <workItem from="1628726159020" duration="31000" />
+      <workItem from="1628733816091" duration="99000" />
+      <workItem from="1628733932212" duration="9000" />
+      <workItem from="1629082424397" duration="186000" />
+      <workItem from="1630161703668" duration="43000" />
+      <workItem from="1630161801093" duration="17000" />
+      <workItem from="1630677391571" duration="485000" />
+      <workItem from="1631164868956" duration="318000" />
+      <workItem from="1632150121497" duration="102000" />
+      <workItem from="1632150249442" duration="138000" />
+      <workItem from="1637805570627" duration="27000" />
+      <workItem from="1637806124853" duration="25000" />
+      <workItem from="1637806173413" duration="39000" />
+      <workItem from="1639058595510" duration="36000" />
+      <workItem from="1639058688795" duration="35000" />
+      <workItem from="1639066955757" duration="29000" />
+      <workItem from="1639233876052" duration="36000" />
+      <workItem from="1639233959361" duration="103000" />
+      <workItem from="1639410536160" duration="1188000" />
+      <workItem from="1639880249300" duration="581000" />
+      <workItem from="1640016485947" duration="1102000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit, layers 0 to 4 working.">
       <created>1619481966988</created>
@@ -397,7 +444,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622918388564</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Minor changes, final version.">
+      <created>1622985252406</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1622985252406</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -413,7 +467,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First Commit, layers 0 to 4 working." />
@@ -436,8 +489,8 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Onion$main.coverage" NAME="onion Coverage Results" MODIFIED="1617458247382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pythonProject$main.coverage" NAME="main Coverage Results" MODIFIED="1617457666920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Onion$onion.coverage" NAME="onion Coverage Results" MODIFIED="1622918381263" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Onion$onion.coverage" NAME="onion Coverage Results" MODIFIED="1640017592808" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Onion$main.coverage" NAME="onion Coverage Results" MODIFIED="1617458247382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
