@@ -8,6 +8,8 @@
 #
 # 5/12/21
 ######################################################
+
+
 def tomtel_VM(memory, debug):
     """Tomtel Virtual machine to interpret given bytecode and return text.
 

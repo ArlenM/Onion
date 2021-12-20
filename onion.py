@@ -26,18 +26,8 @@
 #####################################################################
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
-from helpers import decode_85
-from helpers import writeF
-from helpers import parity_test
-from helpers import byte_str
-from helpers import packetize
-from helpers import depacketize
-from helpers import src_ip_test
-from helpers import dest_ip_test
-from helpers import get_dest_port
-from helpers import ip_hdr_cs
-from helpers import udp_hdr_cs
-from helpers import key_unwrap
+from helpers import decode_85, writeF, parity_test, byte_str, packetize, depacketize, \
+    src_ip_test, dest_ip_test, get_dest_port, ip_hdr_cs, udp_hdr_cs, key_unwrap
 from tomtel import tomtel_VM
 
 
@@ -73,9 +63,9 @@ for i in ba:
 # Convert from 8, 7 bit groups to 7, 8 bit groups.  Uses a string of text 1s and 0s as an intermediary step.
 ba = bytearray()
 for i in range(0, len(ba2), 8):
-    r_str = byte_str(ba2[i]) + byte_str(ba2[i + 1])\
-            + byte_str(ba2[i + 2]) + byte_str(ba2[i + 3])\
-            + byte_str(ba2[i + 4]) + byte_str(ba2[i + 5])\
+    r_str = byte_str(ba2[i]) + byte_str(ba2[i + 1]) \
+            + byte_str(ba2[i + 2]) + byte_str(ba2[i + 3]) \
+            + byte_str(ba2[i + 4]) + byte_str(ba2[i + 5]) \
             + byte_str(ba2[i + 6]) + byte_str(ba2[i + 7])  # Bytes to string.
     ba += bytearray(int(r_str, 2).to_bytes(7, byteorder="big", signed=False))  # String to bytes.
 payL = ba.decode("utf-8")
