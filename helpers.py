@@ -15,6 +15,15 @@ from cryptography.hazmat.primitives.constant_time import bytes_eq
 from cryptography.hazmat.primitives.keywrap import InvalidUnwrap, _unwrap_core
 
 
+def decode_85(pl):
+    """Decode using Adobe85, strip out whitespace, line-feeds, and control characters.
+
+    Every layer needs this as a pre-process."""
+    pl = trim(pl)
+    # I am probably ignoring a lot more than I need to, but it doesn't hurt anything...
+    return base64.a85decode(pl, adobe=True, foldspaces=False, ignorechars=b' \n\r\t\v\\s\0')
+
+
 def trim(pl):
     """Trim down to the payload, delimited by <~ and ~>, adobe version."""
     pl = pl[pl.index("ayload ]"):]  # Drop the header first, could contain stray markers...
@@ -36,15 +45,6 @@ def pad(pl):
     elif len(pl) - 2 % 5 == 4:
         pl += "u"
     return pl + "~>"
-
-
-def decode_85(pl):
-    """Decode using Adobe85, strip out whitespace, line-feeds, and control characters.
-
-    Every layer needs this as a pre-process."""
-    pl = trim(pl)
-    # I am probably ignoring a lot more than I need to, but it doesn't hurt anything...
-    return base64.a85decode(pl, adobe=True, foldspaces=False, ignorechars=b' \n\r\t\v\\s\0')
 
 
 def writeF(pl, fn):
