@@ -20,7 +20,7 @@ def decode_85(pl):
 
     Every layer needs this as a pre-process."""
     pl = trim(pl)
-    # I am probably ignoring a lot more than I need to, but it doesn't hurt anything...
+    # I am probably filtering a lot more than I need to, but it doesn't seem to hurt anything...
     return base64.a85decode(pl, adobe=True, foldspaces=False, ignorechars=b' \n\r\t\v\\s\0')
 
 
