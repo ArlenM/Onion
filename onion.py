@@ -21,7 +21,8 @@
 # I think any 8 bit char set will work,
 # the default ascii for python seems to be 7 bit.
 #
-# Not worried about catching exceptions, it's OK if it halts.
+# Not worried about catching exceptions,
+# if it won't run through I want it to halt.
 #
 # First fully working version! 5/12/21
 # Moved functions to a separate file 12/20/21
