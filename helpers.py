@@ -189,7 +189,7 @@ def key_unwrap(wrapping_key, wrapping_iv, wrapped_key, backend):
 
     r = [wrapped_key[j:j + 8] for j in range(0, len(wrapped_key), 8)]
     a = r.pop(0)
-    a, r = _unwrap_core(wrapping_key, a, r, backend)
+    a, r = _unwrap_core(wrapping_key, a, r)
     if bytes_eq(a, bytes(wrapping_iv)) is False:
         raise InvalidUnwrap()
 
