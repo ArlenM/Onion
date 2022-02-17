@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51a113d4-73b2-4aa5-a8e5-ca378045f6ab" name="Default Changelist" comment="Moved the helper functions to their own file.">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/pythonProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pythonProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers.py" afterDir="false" />
-    </list>
+    <list default="true" id="51a113d4-73b2-4aa5-a8e5-ca378045f6ab" name="Default Changelist" comment="Updated cryptography library, needed a minor change." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -272,7 +267,7 @@
       <workItem from="1645026132881" duration="35000" />
       <workItem from="1645026193191" duration="209000" />
       <workItem from="1645026412887" duration="65000" />
-      <workItem from="1645027424176" duration="318000" />
+      <workItem from="1645027424176" duration="383000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit, layers 0 to 4 working.">
       <created>1619481966988</created>
@@ -547,7 +542,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640273405785</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Updated cryptography library, needed a minor change.">
+      <created>1645027770823</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1645027770823</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,7 +574,8 @@
     <MESSAGE value="Did some refactoring, all layers still working!" />
     <MESSAGE value="Minor changes, final version." />
     <MESSAGE value="Moved the helper functions to their own file." />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved the helper functions to their own file." />
+    <MESSAGE value="Updated cryptography library, needed a minor change." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated cryptography library, needed a minor change." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -175,7 +175,7 @@ def ones_comp_16(n):
     return ~n & 0xffff  # Invert then and to get rid of the sign bit.
 
 
-def key_unwrap(wrapping_key, wrapping_iv, wrapped_key, backend):
+def key_unwrap(wrapping_key, wrapping_iv, wrapped_key):
     """AES Key Unwrap algorithm, implements RFC 3394."""
     # Copied from: https://cryptography.io/en/2.5/_modules/cryptography/hazmat/primitives/keywrap/
     if len(wrapped_key) < 24:
