@@ -116,7 +116,7 @@ eKey = ba[40:80]  # Encrypted key
 pIV = ba[80:96]  # Payload Initialization Vector
 ePayL = ba[96:]  # Encrypted payload
 dKey = key_unwrap(wrapping_key=kEK, wrapping_iv=kIV, wrapped_key=eKey)
-c_text = Cipher(algorithms.AES(dKey), modes.CTR(pIV), backend=default_backend())
+c_text = Cipher(algorithms.AES(dKey), modes.CTR(pIV))
 payL = c_text.decryptor().update(ePayL).decode("utf-8")
 writeF(payL, "onion6.txt")
 
