@@ -28,7 +28,6 @@
 # Moved functions to a separate file 12/20/21
 #
 #####################################################################
-from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from helpers import decode_85, writeF, parity_test, byte_str, packetize, depacketize, \
     src_ip_test, dest_ip_test, get_dest_port, ip_hdr_cs, udp_hdr_cs, key_unwrap
