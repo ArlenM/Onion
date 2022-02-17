@@ -178,6 +178,7 @@ def ones_comp_16(n):
 def key_unwrap(wrapping_key, wrapping_iv, wrapped_key):
     """AES Key Unwrap algorithm, implements RFC 3394."""
     # Copied from: https://cryptography.io/en/2.5/_modules/cryptography/hazmat/primitives/keywrap/
+    # Modified, because Tom uses a different iv than the default.
     if len(wrapped_key) < 24:
         raise InvalidUnwrap("Must be at least 24 bytes")
 
