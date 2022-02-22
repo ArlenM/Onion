@@ -18,8 +18,8 @@
 # Output is a text file for each layer.
 #
 # For charset I use UTF-8 because it is 8 bit,
-# I think any 8 bit char set will work,
-# the default ascii for python seems to be 7 bit.
+# but I think any 8 bit char set will work,
+# the default ASCII for python seems to be 7 bit.
 #
 # Not worried about catching exceptions,
 # if it won't run through I want it to halt.
