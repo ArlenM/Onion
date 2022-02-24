@@ -510,7 +510,7 @@ def tomtel_VM(memory, debug):
                     print("XOR", a, b)
                 a ^= b
                 pc += 1
-            case _:
+            case _:  # Default case
                 if debug:
                     print("Invalid Instruction", memory[pc])
                 pc += 1
