@@ -9,7 +9,7 @@
 # Created by: Arlen McDonald
 #
 # 5/12/21 - Created
-# 2/23/22 - Modified to use the new case statement.
+# 2/23/22 - Modified to use the new match-case statement.
 ######################################################
 
 

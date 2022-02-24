@@ -8,7 +8,7 @@
 #
 # Created by: Arlen McDonald
 #
-# 12/20/21
+# 12/20/21 - Created
 ######################################################
 import base64
 from cryptography.hazmat.primitives.constant_time import bytes_eq

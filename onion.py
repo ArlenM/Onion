@@ -10,7 +10,6 @@
 # Source Website: https://www.tomdalling.com/toms-data-onion/
 #
 # Author: Arlen McDonald
-# 4/3/2021
 #
 # Notes:
 #
@@ -24,9 +23,10 @@
 # Not worried about catching exceptions,
 # if it won't run through I want it to halt.
 #
-# First fully working version! 5/12/21
-# Moved functions to a separate file 12/20/21
-# Modified tomtel to use the case statement 2/23/22
+# 4/3/2021 - Created
+# 5/12/21 - First fully working version!
+# 12/20/21 - Moved functions to a separate file.
+# 2/23/22 - Modified tomtel to use the match-case statement.
 #
 #####################################################################
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
