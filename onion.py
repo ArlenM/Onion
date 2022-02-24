@@ -25,10 +25,10 @@
 #
 # Feel free to use my code, just credit me in the comments somewhere.
 #
-# 4/3/2021 - Created
-# 5/12/21  - First fully working version!
+#   4/3/21 - Created
+#  5/12/21 - First fully working version!
 # 12/20/21 - Moved functions to a separate file.
-# 2/23/22  - Modified tomtel to use the match-case statement.
+#  2/23/22 - Modified tomtel to use the match-case statement.
 #
 #####################################################################
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
