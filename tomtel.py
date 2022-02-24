@@ -37,7 +37,7 @@ def tomtel_VM(memory, debug):
 
     # Main loop
     while pc < eop:
-        match memory[pc]:
+        match memory[pc]:  # Looks a lot better than all the if statements...
             case 0xC2:  # ADD a <- b, 8-bit addition
                 if debug:
                     print("Add", a, b)
