@@ -26,6 +26,7 @@
 #
 # First fully working version! 5/12/21
 # Moved functions to a separate file 12/20/21
+# Modified tomtel to use the case statement 2/23/22
 #
 #####################################################################
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
