@@ -23,6 +23,8 @@
 # Not worried about catching exceptions,
 # if it won't run through I want it to halt.
 #
+# Requires at least Python version 3.10
+#
 # Feel free to use my code, just credit me in the comments somewhere.
 #
 #   4/3/21 - Created
